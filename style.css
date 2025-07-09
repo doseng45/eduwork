@@ -1,0 +1,431 @@
+/* Import Google Font 'Inter' */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variabel Warna (Sangat Direkomendasikan!) */
+/* Sesuaikan nilai hex ini agar sesuai persis dengan warna di gambar Anda */
+:root {
+    --primary-color: #4CAF50; /* Hijau, untuk brand, tombol, dan highlight */
+    --secondary-color: #2196F3; /* Biru, untuk link umum */
+    --accent-color: #FFC107; /* Kuning/Oranye, jika ada elemen aksen lain */
+    --text-dark: #333; /* Warna teks gelap */
+    --text-light: #f4f4f4; /* Warna teks terang */
+    --bg-light: #ffffff; /* Latar belakang bagian putih */
+    --bg-gray: #f0f2f5; /* Latar belakang body dan beberapa kartu abu-abu muda */
+    --shadow-light: rgba(0, 0, 0, 0.1); /* Bayangan ringan */
+    --shadow-medium: rgba(0, 0, 0, 0.15); /* Bayangan sedang */
+}
+
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-gray); /* Latar belakang abu-abu muda untuk seluruh halaman */
+    color: var(--text-dark); /* Warna teks default */
+    line-height: 1.6; /* Jarak antar baris teks */
+}
+
+a {
+    text-decoration: none; /* Menghilangkan garis bawah pada tautan */
+    color: var(--secondary-color); /* Warna tautan default */
+    transition: color 0.3s ease; /* Transisi halus saat warna berubah */
+}
+
+a:hover {
+    color: var(--primary-color); /* Warna tautan saat di-hover */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark); /* Warna judul default */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600; /* Ketebalan font judul */
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Kontainer Utama untuk Konten */
+.container {
+    max-width: 1200px; /* Lebar maksimum konten utama */
+    margin: 0 auto; /* Menengahkan kontainer di halaman */
+    padding: 20px; /* Padding di sisi kiri dan kanan */
+}
+
+/* Deskripsi Bagian (di bawah judul H2) */
+.section-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    max-width: 700px; /* Batasi lebar deskripsi */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Navbar Styles --- */
+.main-navbar {
+    background-color: var(--bg-light); /* Latar belakang putih */
+    padding: 15px 20px;
+    display: flex; /* Menggunakan Flexbox */
+    justify-content: space-between; /* Brand di kiri, menu di kanan */
+    align-items: center; /* Vertikal tengah */
+    box-shadow: 0 2px 5px var(--shadow-light); /* Bayangan halus di bawah navbar */
+    position: sticky; /* Navbar tetap di atas saat digulir */
+    top: 0;
+    z-index: 1000; /* Pastikan navbar di atas elemen lain */
+}
+
+.navbar-brand {
+    color: var(--primary-color); /* Warna brand (hijau) */
+    font-size: 1.8em; /* Ukuran font brand */
+    font-weight: 700; /* Ketebalan font brand */
+}
+
+.navbar-nav-links {
+    list-style-type: none; /* Menghilangkan bullet point */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Item menu sejajar horizontal */
+    gap: 30px; /* Jarak antar item menu */
+}
+
+.navbar-nav-links li a {
+    color: var(--text-dark); /* Warna teks menu */
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative; /* Untuk efek garis bawah */
+}
+
+.navbar-nav-links li a::after { /* Efek garis bawah saat hover */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color); /* Warna garis bawah */
+    transition: width 0.3s ease; /* Animasi lebar garis */
+}
+
+.navbar-nav-links li a:hover::after {
+    width: 100%; /* Garis bawah muncul penuh saat di-hover */
+}
+
+/* --- Hero Section (Content 1) Styles --- */
+.hero-section {
+    background-color: var(--bg-light); /* Latar belakang putih */
+    margin-top: 40px; /* Jarak dari navbar */
+    padding: 60px 40px;
+    border-radius: 12px; /* Sudut membulat */
+    box-shadow: 0 8px 16px var(--shadow-light); /* Bayangan lebih jelas */
+    display: flex; /* Menggunakan Flexbox untuk teks dan gambar */
+    align-items: center; /* Vertikal tengah */
+    justify-content: space-between; /* Jarak antara teks dan gambar */
+    gap: 40px; /* Jarak antar elemen flex */
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Memastikan konten mengisi lebar hero section */
+}
+
+.hero-text {
+    flex: 1; /* Mengambil ruang yang tersedia */
+    text-align: left;
+    max-width: 60%; /* Batasi lebar teks */
+}
+
+.hero-text h2 {
+    font-size: 2.8em; /* Ukuran judul */
+    color: var(--primary-color); /* Warna judul (hijau) */
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: var(--primary-color); /* Warna tombol (hijau) */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px; /* Sudut membulat pada tombol */
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animasi hover */
+    font-weight: 600;
+}
+
+.cta-button:hover {
+    background-color: #43a047; /* Warna lebih gelap saat di-hover */
+    transform: translateY(-2px); /* Efek naik saat di-hover */
+}
+
+.hero-image-wrapper {
+    flex-shrink: 0; /* Mencegah gambar menyusut */
+    width: 35%; /* Lebar gambar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%; /* Membuat gambar profil bulat */
+    border: 5px solid var(--primary-color); /* Border warna primer */
+    box-shadow: 0 4px 10px var(--shadow-medium); /* Bayangan pada gambar */
+}
+
+/* --- About Me Section (Content 2) Styles --- */
+.about-me-section {
+    background-color: var(--bg-gray); /* Latar belakang abu-abu muda */
+    padding: 60px 20px;
+    text-align: center; /* Menengahkan judul dan deskripsi */
+}
+
+.about-me-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.biodata-grid {
+    display: grid; /* Menggunakan CSS Grid */
+    /* Responsif: Akan membuat kolom sebanyak mungkin dengan min lebar 280px, sisanya dibagi rata */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Jarak antar item biodata */
+    margin-top: 40px;
+}
+
+.biodata-item {
+    background-color: var(--bg-light); /* Latar belakang putih untuk setiap kartu */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-light); /* Bayangan pada kartu */
+    padding: 25px;
+    text-align: left; /* Teks rata kiri di dalam kartu */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animasi hover */
+}
+
+.biodata-item:hover {
+    transform: translateY(-5px); /* Efek naik saat di-hover */
+    box-shadow: 0 6px 12px var(--shadow-medium); /* Bayangan lebih gelap saat di-hover */
+}
+
+.biodata-item h3 {
+    color: var(--secondary-color); /* Warna judul kategori (biru) */
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+.biodata-item p {
+    color: #666;
+    font-size: 1em;
+}
+
+/* --- Portfolio Section (Content 3) Styles --- */
+.portfolio-section {
+    background-color: var(--bg-light); /* Latar belakang putih */
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px var(--shadow-light);
+}
+
+.portfolio-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.portfolio-grid {
+    display: grid;
+    /* Responsif: min 300px, max 1fr per kolom */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.portfolio-item-card {
+    background-color: var(--bg-gray); /* Latar belakang abu-abu muda untuk kartu proyek */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    overflow: hidden; /* Penting untuk gambar */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column; /* Konten di kartu ditumpuk vertikal */
+}
+
+.portfolio-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+.portfolio-item-card img {
+    width: 100%;
+    height: 200px; /* Tinggi gambar tetap */
+    object-fit: cover; /* Gambar mengisi area, bisa terpotong */
+    display: block;
+    border-top-left-radius: 10px; /* Sudut atas membulat */
+    border-top-right-radius: 10px;
+}
+
+.portfolio-item-card a {
+    display: block; /* Agar link mengambil seluruh lebar */
+    padding: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    background-color: var(--bg-light); /* Latar belakang putih untuk area teks */
+    flex-grow: 1; /* Agar mengambil sisa ruang jika ada variasi tinggi */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.portfolio-item-card a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+    background-color: var(--text-dark); /* Latar belakang gelap */
+    color: var(--text-light); /* Warna teks terang */
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Agar responsif, item bisa pindah baris */
+    gap: 20px; /* Jarak antar kolom footer */
+}
+
+.footer-social a {
+    color: var(--text-light); /* Warna ikon sosial */
+    font-size: 1.1em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--primary-color); /* Warna saat di-hover */
+}
+
+.footer-legal p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer-legal a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+/* Untuk layar berukuran sedang (tablet, laptop kecil) */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column; /* Teks dan gambar menumpuk */
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        max-width: 100%; /* Ambil lebar penuh */
+        margin-bottom: 30px;
+    }
+
+    .hero-image-wrapper {
+        width: 60%; /* Lebar gambar di tablet */
+    }
+
+    .hero-text h2 {
+        font-size: 2.2em;
+    }
+}
+
+/* Untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+    .main-navbar {
+        flex-direction: column; /* Navbar menumpuk */
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .navbar-brand {
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav-links {
+        flex-direction: column; /* Menu navigasi menumpuk */
+        width: 100%;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navbar-nav-links li a {
+        padding: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-section {
+        padding: 30px 15px;
+        margin-top: 20px;
+    }
+
+    .hero-text h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-image-wrapper {
+        width: 80%; /* Lebar gambar di ponsel */
+    }
+
+    .about-me-section, .portfolio-section {
+        padding: 40px 15px;
+    }
+
+    .about-me-section h2, .portfolio-section h2 {
+        font-size: 2em;
+    }
+
+    .section-description {
+        font-size: 1em;
+    }
+
+    .footer-content {
+        flex-direction: column; /* Footer menumpuk */
+        text-align: center;
+    }
+
+    .footer-social {
+        margin-bottom: 15px;
+    }
+}
+
+/* Untuk layar ponsel sangat kecil */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
