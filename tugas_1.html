@@ -1,92 +1,125 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website yosef</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Yosef</title>
 
-    <!-- ini adalah link style css -->
-     <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <!-- navbar -->
-   <nav class="main-navbar">
-    <a href="#" class="navbar-brand">Brand Anda</a>
-    <ul class="navbar-nav-links">
-        <li><a href="#header-section">Header</a></li>
-        <li><a href="#biodata-section">Biodata</a></li>
-        <li><a href="#portfolio-section">Portofolio</a></li>
-    </ul>
-</nav>
-    <!-- content 1 -->
-     <main>
-    <section id="header-section" class="hero-section">
-        <img src="gbr1.jpeg" alt="foto profil">
-        <h2>Selamat datang di website Yosef Rosmana</h2>
-        <p>Ini adalah website saya awal belajar coding melalui eduwork e-course</p>
-        <button class="cta-button">Pelajari Lebih lanjut</button>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Profil</a>
+      <a class="navbar-brand" href="#">Portofolio</a>
+      <a class="navbar-brand" href="#">Tentang Saya</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="container my-5">
+    <section id="header-section" class="text-center">
+      <img src="gbr1.jpeg" alt="foto profil" class="img-fluid rounded mb-3" style="max-width: 200px;">
+      <h2>Selamat datang di website Yosef Rosmana</h2>
+      <p>Ini adalah website saya awal belajar coding melalui eduwork e-course</p>
+      <button class="btn btn-primary">Pelajari Lebih Lanjut</button>
     </section>
 
-    <section id="biodata-section" class="about-me-section">
-        <h2>Tentang saya</h2>
-        <p>Biarkan saya memperkenalkan diri</p>
-        </section>
+    <!-- Biodata Section -->
+    <section id="biodata-section" class="mt-5">
+      <h2 class="text-center">Tentang Saya</h2>
+      <p class="text-center">Biarkan saya memperkenalkan diri</p>
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Nama Saya</h5>
+      <p>Yosef Rosmana</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Contact Me</h5>
+      <p>yosefrosmana45@gmail.com</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Pendidikan</h5>
+      <p>SMK Teknik Kendaraan Ringan</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Pekerjaan Saat Ini</h5>
+      <p>Operator Mesin Oyang</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Hobi Saya</h5>
+      <p>Traveling, Mendengarkan Musik, Bermain Alat Musik, Bermain Catur</p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="border p-3 rounded shadow-sm">
+      <h5>Domisili</h5>
+      <p>Sukoharjo, Jawa Tengah</p>
+    </div>
+  </div>
+</div>
 
-        <div class="biodata-grid"> <div class="biodata-item">
-                <h3>Nama saya</h3>
-                <p>Yosef Rosmana</p>
-            </div>
-            <div class="biodata-item">
-                <h3>Contact me</h3>
-                <p>yosefrosmana45@gmail.com</p>
-            </div>
-            <div class="biodata-item">
-                <h3>Pendidikan</h3>
-                <p>SMK Teknik Kendaraan Ringan</p>
-            </div>
-            <div class="biodata-item">
-                <h3>Pekerjaan Saat Ini</h3>
-                <p>Operator Mesin Oyang</p>
-            </div>
-            <div class="biodata-item">
-                <h3>Hobi Saya</h3>
-                <p>Traveling, Mendengarkan Music, Bermain Alat Musik, Bermain Catur.</p>
-            </div>
-            <div class="biodata-item">
-                <h3>Domisili</h3>
-                <p>Sukoharjo, Jawa Tengah</p>
-            </div>
-        </div>
     </section>
-        
-    <section id="portfolio-section" class="portfolio-section">
-        <h2>Portofolio</h2>
-        <div class="portfolio-grid-container"> <div class="portfolio-item-card"> <img src="gbr3.jpeg" alt="proyek 1">
-                <a href="#dhwdddd">Proyek 1</a>
-            </div>
-            <div class="portfolio-grid-container"> <div class="portfolio-item-card"> <img src="gbr4.jpeg" alt="proyek 1">
-                <a href="#dhwdddd">Proyek 1</a>
-            </div>
-            <div class="portfolio-grid-container"> <div class="portfolio-item-card"> <img src="gbr5.jpeg" alt="proyek 1">
-                <a href="#dhwdddd">Proyek 1</a>
-            </div>
 
-            </div>
-    </section>
-</main>
+    <!-- Portofolio Section -->
+    <section id="portfoo-section" class="mt-5">
+  <h2 class="text-center">Portofolio</h2>
+  <div class="container mt-3">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+<img src="gbr3.jpeg" class="card-img-top img-fluid" alt="proyek 1" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <a href="#dhwdddd" class="btn btn-outline-primary w-100">Proyek 1</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="gbr4.jpeg" class="card-img-top img-fluid" alt="proyek 2" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <a href="#dhwdddd" class="btn btn-outline-primary w-100">Proyek 2</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="gbr5.jpeg" class="card-img-top img-fluid" alt="proyek 3" style="width: 200px; object-fit: cover;">
+          <div class="card-body">
+            <a href="#dhwdddd" class="btn btn-outline-primary w-100">Proyek 3</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- footer -->
-     <footer>
-        <div class="footer-column">
-            <div class="social-icon">
-                <a href="#">FB</a>
-                <a href="#">IG</a>
-                <a href="#">Linkid</a>
-            </div>
-        </div>
-        <div>
-            <p>$copy;2025 Yosef rosmana. Semua Hak Dilindungi</p>
-            <p><a href="/privacy-policy">Kebijakan Privasi</a> | <a href="/terms">Syarat & Ketentuan</a></p>
-        </div>
-     </footer>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white mt-5 p-4 text-center">
+    <div class="mb-2">
+      <a href="#" class="text-white me-3">Facebook</a>
+      <a href="#" class="text-white me-3">Instagram</a>
+      <a href="#" class="text-white">LinkedIn</a>
+    </div>
+    <p>&copy; 2025 Yosef Rosmana. Semua Hak Dilindungi</p>
+    <p><a href="/privacy-policy" class="text-white">Kebijakan Privasi</a> | <a href="/terms" class="text-white">Syarat & Ketentuan</a></p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
