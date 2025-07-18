@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daftar Produk - Demo E-commerce JS</title>
+  <style>
+    /* ========== RESET RINGAN ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.4; background:#f7f7f7; color:#333; padding:1rem; }
+
+    /* ========== WRAPPER ========== */
+    .app-wrapper { max-width:1200px; margin:0 auto; }
+    h1 { text-align:center; margin-bottom:1rem; }
+
+    /* ========== FILTER AREA ========== */
+    .filter-bar { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-bottom:1.5rem; }
+    .filter-bar button {
+      padding:.5rem 1rem;
+      border:1px solid #ccc;
+      background:#fff;
+      cursor:pointer;
+      border-radius:.25rem;
+      transition:all .15s ease;
+    }
+    .filter-bar button.active,
+    .filter-bar button:hover {
+      background:#007bff;
+      color:#fff;
+      border-color:#007bff;
+    }
+
+    /* ========== GRID PRODUK ========== */
+    .product-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:1rem;
+    }
+
+    .product-card {
+      background:#fff;
+      border:1px solid #e0e0e0;
+      border-radius:.5rem;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .product-card:hover {
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+
+    .product-card img {
+      width:100%;
+      aspect-ratio:1/1; /* kotak */
+      object-fit:cover;
+      background:#eee;
+      display:block;
+    }
+
+    .product-card .product-body {
+      padding:1rem;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:.5rem;
+    }
+
+    .product-card h3 { font-size:1rem; font-weight:600; }
+    .product-card p { font-size:.875rem; color:#666; }
+    .product-card .price { font-size:1rem; font-weight:bold; color:#e53935; }
+    .product-card .category-tag { font-size:.75rem; color:#007bff; text-transform:capitalize; }
+  </style>
+</head>
+<body>
+  <div class="app-wrapper">
+    <h1>Daftar Produk</h1>
+
+    <!-- ================= FILTER BUTTONS ================= -->
+    <div class="filter-bar" id="filterBar">
+      <!-- Tombol kategori akan digenerate otomatis oleh JS -->
+    </div>
+
+    <!-- ================= GRID PRODUK ================= -->
+    <div class="product-grid" id="productGrid">
+      <!-- Kartu produk akan dimasukkan JS -->
+    </div>
+  </div>
+
+  <script>
+    // ================== 1. DATA PRODUK ==================
+    // Array of Object: tiap produk = 1 object dengan properti sesuai kebutuhan tugas.
+    const products = [
+      {
+        id: 1,
+        name: "Hoodie Polos Unisex",
+        price: 79000,
+        desc: "Hoodie bahan fleece lembut, cocok harian.",
+        img: "https://via.placeholder.com/300x300?text=Hoodie",
+        category: "fashion"
+      },
+      {
+        id: 2,
+        name: "Serum Wajah GlowUp",
+        price: 55000,
+        desc: "Serum pencerah wajah untuk kulit kusam.",
+        img: "https://via.placeholder.com/300x300?text=Serum",
+        category: "skincare"
+      },
+      {
+        id: 3,
+        name: "Topi Bucket Kekinian",
+        price: 35000,
+        desc: "Topi bahan canvas, ringan dan trendi.",
+        img: "https://via.placeholder.com/300x300?text=Bucket+Hat",
+        category: "aksesoris"
+      },
+      {
+        id: 4,
+        name: "Kaos Oversize Wanita",
+        price: 45000,
+        desc: "Kaos adem, cutting oversize nyaman kerja.",
+        img: "https://via.placeholder.com/300x300?text=Kaos",
+        category: "fashion"
+      },
+      {
+        id: 5,
+        name: "Hand Cream Moist+",
+        price: 29000,
+        desc: "Krim tangan pelembap buat kerja di pabrik.",
+        img: "https://via.placeholder.com/300x300?text=Hand+Cream",
+        category: "skincare"
+      },
+      {
+        id: 6,
+        name: "Charger Fast 20W",
+        price: 99000,
+        desc: "Charger cepat kompatibel Android/iOS.",
+        img: "https://via.placeholder.com/300x300?text=Charger",
+        category: "elektronik"
+      }
+    ];
+
+    // ================== 2. ELEMENT TARGET DOM ==================
+    const productGrid = document.getElementById("productGrid"); // tempat kartu produk
+    const filterBar   = document.getElementById("filterBar");   // tempat tombol filter
+
+    // ================== 3. UTIL: FORMAT RUPIAH ==================
+    function formatRupiah(num) {
+      // Intl.NumberFormat: built-in JS untuk format angka sesuai locale
+      return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(num);
+    }
+
+    // ================== 4. RENDER PRODUK ==================
+    function renderProducts(list) {
+      // 'list' = array produk yang mau ditampilkan (bisa semua / hasil filter)
+      productGrid.innerHTML = ""; // kosongkan dulu sebelum render ulang
+
+      list.forEach(prod => {
+        // Template HTML satu kartu produk (pakai template literal backtick ` ... `)
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${prod.img}" alt="${prod.name}" />
+          <div class="product-body">
+            <h3>${prod.name}</h3>
+            <p>${prod.desc}</p>
+            <div class="price">${formatRupiah(prod.price)}</div>
+            <div class="category-tag">${prod.category}</div>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    // ================== 5. BUAT DAFTAR KATEGORI ==================
+    // Ambil semua kategori unik dari array products
+    const categories = ["all", ...new Set(products.map(p => p.category))];
+    // Hasil contoh: ["all", "fashion", "skincare", "aksesoris", "elektronik"]
+
+    // ================== 6. RENDER TOMBOL FILTER ==================
+    function renderFilterButtons() {
+      filterBar.innerHTML = ""; // kosongkan
+
+      categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.textContent = cat === "all" ? "Semua" : cat;
+        btn.dataset.category = cat; // simpan kategori di data-attribute
+        if (cat === "all") btn.classList.add("active"); // default aktif
+
+        btn.addEventListener("click", () => {
+          // Hapus aktif dari semua tombol, lalu aktifkan yg diklik
+          document.querySelectorAll(".filter-bar button").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          // Filter produk
+          if (cat === "all") {
+            renderProducts(products); // tampilkan semua
+          } else {
+            const filtered = products.filter(p => p.category === cat);
+            renderProducts(filtered);
+          }
+        });
+
+        filterBar.appendChild(btn);
+      });
+    }
+
+    // ================== 7. INISIALISASI (JALANKAN SAAT LOAD) ==================
+    renderFilterButtons();  // tampilkan tombol kategori
+    renderProducts(products); // tampilkan semua produk awal
+  </script>
+</body>
+</html>
